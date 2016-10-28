@@ -1,3 +1,10 @@
-Bench Press
+Dumbbell Chest Press
+Push Ups
+Incline Bench Press
+Incline Dumbbell Press
+Decline Bench Press
+Dumbbell Flies
+Butterflies(machine)
+Barbell Bench Press
 Incline Press
 Cable Crossover

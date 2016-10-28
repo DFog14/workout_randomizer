@@ -1,3 +1,9 @@
-Barbell Row
-Dumbbell Row
+Bent-Over Barbell Row
+One-Arm Dumbbell Row
 Deadlift
+Pull Ups
+Pulldowns
+Inverted Row
+Cable Row
+Barbell T-Bar Row
+Iso-Lateral Row(machine)
