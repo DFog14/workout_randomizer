@@ -1,0 +1,8 @@
+{
+	"wordpress":{
+		"url":"*",
+		"username":"*",
+		"password":"*",
+		"blogid":""
+	}
+}

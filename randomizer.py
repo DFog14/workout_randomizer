@@ -1,5 +1,5 @@
 import random as ran
-import time
+from postTool import config_parse, post
 
 with open('abs.txt') as f:
     ab_exercises = f.readlines()
@@ -16,9 +16,9 @@ with open('back.txt') as f:
 with open('shoulder.txt') as f:
     shoulder_exercises = f.readlines()
 
-workout1 = []
-workout2 = []
-workout3 = []
+workout1 = ["----Workout #1----\n"]
+workout2 = ["\n----Workout #2----\n"]
+workout3 = ["\n----Workout #3----\n"]
 workout1.append(ab_exercises.pop(ran.randrange(len(ab_exercises))))
 workout1.append(bi_exercises.pop(ran.randrange(len(bi_exercises))))
 workout1.append(leg_exercises.pop(ran.randrange(len(leg_exercises))))
@@ -42,12 +42,7 @@ workout3.append(tri_exercises.pop(ran.randrange(len(tri_exercises))))
 workout3.append(chest_exercises.pop(ran.randrange(len(chest_exercises))))
 workout3.append(back_exercises.pop(ran.randrange(len(back_exercises))))
 workout3.append(shoulder_exercises.pop(ran.randrange(len(shoulder_exercises))))   
-    
-temp = open('workout.txt', 'w')
-temp.write("--Workout #1--\n")
-temp.writelines(workout1)
-temp.write("\n--Workout #2--\n")
-temp.writelines(workout2)
-temp.write("\n--Workout #3--\n")
-temp.writelines(workout3)
-temp.close()
+
+workout = "".join(workout1) + "".join(workout2) + "".join(workout3)
+
+post(workout, ["Workout"])
