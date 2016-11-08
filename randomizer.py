@@ -1,48 +1,29 @@
 import random as ran
+import glob
 from postTool import config_parse, post
 
-with open('abs.txt') as f:
-    ab_exercises = f.readlines()
-with open('bicep.txt') as f:
-    bi_exercises = f.readlines()
-with open('leg.txt') as f:
-    leg_exercises = f.readlines()
-with open('tricep.txt') as f:
-    tri_exercises = f.readlines()
-with open('chest.txt') as f:
-    chest_exercises = f.readlines()
-with open('back.txt') as f:
-    back_exercises = f.readlines()
-with open('shoulder.txt') as f:
-    shoulder_exercises = f.readlines()
+#Initialize holding list for text file data. Read in all text files in directory.
+temp = []
+files = glob.glob('./*.txt')
 
+#Cycle through list of files, read in data as seperate lines, select 3 lines at random
+for i in files:
+    with open(i) as f:
+        stor  = f.readlines()
+        temp.append(ran.sample(stor, 3))
+
+#Initialize workout lists with title blocks and spacing
 workout1 = ["----Workout #1----\n"]
 workout2 = ["\n----Workout #2----\n"]
 workout3 = ["\n----Workout #3----\n"]
-workout1.append(ab_exercises.pop(ran.randrange(len(ab_exercises))))
-workout1.append(bi_exercises.pop(ran.randrange(len(bi_exercises))))
-workout1.append(leg_exercises.pop(ran.randrange(len(leg_exercises))))
-workout1.append(tri_exercises.pop(ran.randrange(len(tri_exercises))))
-workout1.append(chest_exercises.pop(ran.randrange(len(chest_exercises))))
-workout1.append(back_exercises.pop(ran.randrange(len(back_exercises))))
-workout1.append(shoulder_exercises.pop(ran.randrange(len(shoulder_exercises))))
 
-workout2.append(ab_exercises.pop(ran.randrange(len(ab_exercises))))
-workout2.append(bi_exercises.pop(ran.randrange(len(bi_exercises))))
-workout2.append(leg_exercises.pop(ran.randrange(len(leg_exercises))))
-workout2.append(tri_exercises.pop(ran.randrange(len(tri_exercises))))
-workout2.append(chest_exercises.pop(ran.randrange(len(chest_exercises))))
-workout2.append(back_exercises.pop(ran.randrange(len(back_exercises))))
-workout2.append(shoulder_exercises.pop(ran.randrange(len(shoulder_exercises))))
+#Append elements from imbedded lists in list "temp" to workout lists
+for i in temp:
+    workout1.append(i[0])
+    workout2.append(i[1])
+    workout3.append(i[2])
 
-workout3.append(ab_exercises.pop(ran.randrange(len(ab_exercises))))
-workout3.append(bi_exercises.pop(ran.randrange(len(bi_exercises))))
-workout3.append(leg_exercises.pop(ran.randrange(len(leg_exercises))))
-workout3.append(tri_exercises.pop(ran.randrange(len(tri_exercises))))
-workout3.append(chest_exercises.pop(ran.randrange(len(chest_exercises))))
-workout3.append(back_exercises.pop(ran.randrange(len(back_exercises))))
-workout3.append(shoulder_exercises.pop(ran.randrange(len(shoulder_exercises))))   
-
+#Combine formatted lists for Wordpress post tool
 workout = "".join(workout1) + "".join(workout2) + "".join(workout3)
-
 post(workout, ["Workout"])
+
